@@ -1,0 +1,33 @@
+.sidenav {
+    border: none;
+}
+
+.sidenav .navigation-header {
+    text-transform: uppercase;
+}
+
+.sidenav .navigation-header .navigation-header-text {
+    color: #969696;
+}
+
+.sidenav li > a.btn > i {
+    color: #fff;
+}
+
+.fas.material-icons {
+    font-size: 20px;
+}
+
+.icon-k8s {
+    float: left;
+    height: 48px;
+    line-height: 84px;
+    margin: 0 32px 0 0;
+    width: 24px;
+
+    --background: rgba(0,0,0,0.54);
+}
+
+.sidenav .right {
+    margin: 0px;
+}

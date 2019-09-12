@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.css" integrity="sha256-13EKEXRsynh3cmmNF1dlW6uvoC1SZVaW94bIHZQJoMU=" crossorigin="anonymous" />    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.min.css">
+    <link rel="stylesheet" href="/index.css">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  </head>
+  <body class="vertical-layout vertical-menu-collapsible page-header-dark vertical-modern-menu 2-columns">
+    <header class="page-topbar">
+        <div class="navbar navbar-fixed">
+            <nav class="navbar-main navbar-color nav-collapsible navbar-dark no-shadow">
+                <ul class="navbar-list right">
+                    <li></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <aside class="sidenav-main">
+        <ul class="sidenav sidenav-collapsible leftside-navigation collapsible sidenav-light sidenav-active-square sidenav-fixed">
+            <li class="navigation-header">
+                <a class="navigation-header-text">Cluster</a>
+            </li>
+            <li>
+                <a class="waves-effect waves-cyan">
+                    <svg class="icon-k8s">
+                        <use xlink:href="k8s.svg#resources-unlabeled-ns"></use>
+                    </svg>
+                    <span class="menu-title">Namespaces</span>
+                </a>
+            </li>
+            <li>
+                <a class="waves-effect waves-cyan">
+                    <svg class="icon-k8s">
+                        <use xlink:href="k8s.svg#infrastructure_components-unlabeled-node"></use>
+                    </svg>
+                    <span class="menu-title">Nodes</span>
+                </a>
+            </li>
+            <li>
+                <a class="waves-effect waves-cyan">
+                    <i class="fas fa-cloud material-icons"></i>
+                    <span class="menu-title">Control Plane</span>
+                </a>
+            </li>
+            <li class="divider"></li>
+            <li>
+                <ul id="namespace-selector" class="dropdown-content">
+                    <li><a>All Namespaces</a></li>
+                    <li class="divider"></li>
+                    <li><a>default</a></li>
+                    <li><a>emojivoto</a></li>
+                    <li><a>kube-node-lease</a></li>
+                    <li><a>kube-public</a></li>
+                    <li><a>kube-system</a></li>
+                    <li><a>linkerd</a></li>
+                </ul>
+                <a class="btn dropdown-trigger" href="#!" data-target="namespace-selector">
+                    default
+                    <i class="material-icons right">arrow_drop_down</i>
+                </a>
+            </li>
+            <li class="navigation-header">
+                <a class="navigation-header-text">Workloads</a>
+            </li>
+            <li>
+                <a class="waves-effect waves-cyan">
+                    <svg class="icon-k8s">
+                        <use xlink:href="k8s.svg#resources-unlabeled-cronjob"></use>
+                    </svg>
+                    <span class="menu-title">Cron Jobs</span>
+                </a>
+            </li>
+            <li>
+                <a class="waves-effect waves-cyan">
+                    <svg class="icon-k8s">
+                        <use xlink:href="k8s.svg#resources-unlabeled-ds"></use>
+                    </svg>
+                    <span class="menu-title">Daemon Sets</span>
+                </a>
+            </li>
+            <li>
+                <a class="waves-effect waves-cyan">
+                    <svg class="icon-k8s">
+                        <use xlink:href="k8s.svg#resources-unlabeled-deploy"></use>
+                    </svg>
+                    <span class="menu-title">Deployments</span>
+                </a>
+            </li>
+            <li>
+                <a class="waves-effect waves-cyan">
+                    <svg class="icon-k8s">
+                        <use xlink:href="k8s.svg#resources-unlabeled-job"></use>
+                    </svg>
+                    <span class="menu-title">Jobs</span>
+                </a>
+            </li>
+            <li>
+                <a class="waves-effect waves-cyan">
+                    <svg class="icon-k8s">
+                        <use xlink:href="k8s.svg#resources-unlabeled-pod"></use>
+                    </svg>
+                    <span class="menu-title">Pods</span>
+                </a>
+            </li>
+            <li>
+                <a class="waves-effect waves-cyan">
+                    <svg class="icon-k8s">
+                        <use xlink:href="k8s.svg#resources-unlabeled-rs"></use>
+                    </svg>
+                    <span class="menu-title">Replica Sets</span>
+                </a>
+            </li>
+            <li>
+                <a class="waves-effect waves-cyan">
+                    <svg class="icon-k8s">
+                        <use xlink:href="k8s.svg#resources-unlabeled-sts"></use>
+                    </svg>
+                    <span class="menu-title">Stateful Sets</span>
+                </a>
+            </li>
+            <li class="navigation-header">
+                <a class="navigation-header-text">Configuration</a>
+            </li>
+            <li>
+                <a class="waves-effect waves-cyan">
+                    <svg class="icon-k8s">
+                        <use xlink:href="k8s.svg#resources-unlabeled-ing"></use>
+                    </svg>
+                    <span class="menu-title">Ingresses</span>
+                </a>
+            </li>
+            <li>
+                <a class="waves-effect waves-cyan">
+                    <svg class="icon-k8s">
+                        <use xlink:href="k8s.svg#resources-unlabeled-svc"></use>
+                    </svg>
+                    <span class="menu-title">Services</span>
+                </a>
+            </li>
+            <li>
+                <a class="waves-effect waves-cyan">
+                    <svg class="icon-k8s">
+                        <use xlink:href="k8s.svg#resources-unlabeled-sa"></use>
+                    </svg>
+                    <span class="menu-title">Service Accounts</span>
+                </a>
+            </li>
+            <li>
+                <a class="waves-effect waves-cyan">
+                    <i class="fas fa-id-badge material-icons"></i>
+                    <span class="menu-title">Service Profiles</span>
+                </a>
+            </li>
+            <li>
+                <a class="waves-effect waves-cyan">
+                    <i class="fas fa-filter material-icons"></i>
+                    <span class="menu-title">Traffic Splits</span>
+                </a>
+            </li>
+            <li class="divider"></li>
+            <li class="navigation-header">
+                <a class="navigation-header-text">Tools</a>
+            </li>
+            <li>
+                <a class="waves-effect waves-cyan">
+                    <i class="fas fa-microscope material-icons"></i>
+                    <span class="menu-title">Tap</span>
+                </a>
+            </li>
+            <li>
+                <a class="waves-effect waves-cyan">
+                    <i class="fas fa-stream material-icons"></i>
+                    <span class="menu-title">Top</span>
+                </a>
+            </li>
+            <li>
+                <a class="waves-effect waves-cyan">
+                    <i class="fas fa-random material-icons"></i>
+                    <span class="menu-title">Routes</span>
+                </a>
+            </li>
+            <li class="divider"></li>
+            <li>
+                <a class="waves-effect waves-cyan">
+                    <i class="fas fa-info-circle material-icons"></i>
+                    <span class="menu-title">About</span>
+                </a>
+            </li>
+            <li>
+                <a class="waves-effect waves-cyan">
+                    <i class="far fa-grin material-icons"></i>
+                    <span class="menu-title">Community</span>
+                    <i class="fas fa-external-link-alt right"></i>
+                </a>
+            </li>
+            <li>
+                <a class="waves-effect waves-cyan">
+                    <i class="far fa-file-alt material-icons"></i>
+                    <span class="menu-title">Documentation</span>
+                    <i class="fas fa-external-link-alt right"></i>
+                </a>
+            </li>
+            <li>
+                <a class="waves-effect waves-cyan">
+                    <i class="fab fa-github material-icons"></i>
+                    <span class="menu-title">GitHub</span>
+                    <i class="fas fa-external-link-alt right"></i>
+                </a>
+            </li>
+            <li>
+                <a class="waves-effect waves-cyan">
+                    <i class="fas fa-envelope material-icons"></i>
+                    <span class="menu-title">Mailing List</span>
+                    <i class="fas fa-external-link-alt right"></i>
+                </a>
+            </li>
+            <li>
+                <a class="waves-effect waves-cyan">
+                    <i class="fab fa-slack material-icons"></i>
+                    <span class="menu-title">Slack</span>
+                    <i class="fas fa-external-link-alt right"></i>
+                </a>
+            </li>
+        </ul>
+    </aside>
+
+    <div id="main">
+        <div class="row">
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.js" integrity="sha256-6DDZX77BrYnAmK9a3N3tvNPtyTIk1q1w9iW+UBtot3Y=" crossorigin="anonymous"></script>
+    <script>M.AutoInit();</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/svgxuse/1.2.6/svgxuse.min.js" integrity="sha256-+xblFIDxgSu6OfR6TdLhVHZzVrhw8eXiVk8PRi9ACY8=" crossorigin="anonymous"></script>
+</body>
+</html>
