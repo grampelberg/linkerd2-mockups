@@ -1,33 +1,59 @@
+/* Sidebar */
+.linkerd-primary {
+  background-color: #4caf50 !important;
+}
+
 .sidenav {
-    border: none;
+  border: none;
 }
-
-.sidenav .navigation-header {
-    text-transform: uppercase;
-}
-
-.sidenav .navigation-header .navigation-header-text {
-    color: #969696;
-}
-
 .sidenav li > a.btn > i {
-    color: #fff;
+  color: #fff;
 }
-
-.fas.material-icons {
-    font-size: 20px;
+.sidenav .navigation-header {
+  text-transform: uppercase;
 }
-
-.icon-k8s {
-    float: left;
-    height: 48px;
-    line-height: 84px;
-    margin: 0 32px 0 0;
-    width: 24px;
-
-    --background: rgba(0,0,0,0.54);
+.sidenav .navigation-header .navigation-header-text {
+  color: #969696;
 }
-
 .sidenav .right {
-    margin: 0px;
+  margin: 0px;
 }
+.sidenav .fas.material-icons {
+  font-size: 20px;
+}
+.sidenav .icon-k8s {
+  float: left;
+  height: 48px;
+  line-height: 84px;
+  margin: 0 32px 0 0;
+  width: 24px;
+  --background: rgba(0,0,0,0.54);
+}
+.sidenav .logo {
+  fill: #fff;
+  height: 65px;
+  padding: 10px 40px;
+}
+
+.sidenav-main {
+  position: fixed;
+  z-index: 999;
+  top: 0;
+}
+
+.btn-sidenav-toggle {
+  position: relative;
+  top: 10px;
+  left: 10px;
+}
+
+.navbar .navbar-list {
+  margin-left: 1em;
+}
+
+/* Main Content */
+.main .card {
+  overflow-x: auto;
+}
+
+/*# sourceMappingURL=index.css.map */
