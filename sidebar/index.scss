@@ -58,9 +58,12 @@
 
 .navbar {
     .navbar-main {
-        // @media only screen and (min-width: 993px) {
-        //     padding: 0 0 0 300px;
-        // }
+        @media only screen and (min-width: 993px) {
+            padding-left: 300px;
+        }
+        @media only screen and (max-width: 993px) {
+            padding-left: 3em;
+        }
     }
 
     .navbar-list {
@@ -72,7 +75,10 @@
 /* Main Content */
 
 .main {
-    .card {
-        overflow-x: auto;
+    margin-left: 1em;
+    margin-right: 1em;
+
+    @media only screen and (min-width: 993px) {
+        padding-left: 300px;
     }
 }

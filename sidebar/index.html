@@ -14,7 +14,7 @@
             <nav class="navbar-main navbar-color nav-collapsible navbar-dark no-shadow linkerd-primary">
                 <div>
                     <div class="row">
-                        <ul class="navbar-list col offset-s1 s11 offset-m1 m11 offset-l4 l8">
+                        <ul class="navbar-list col">
                             <li>
                                 <h5>Namespaces</h5>
                             </li>
@@ -240,51 +240,46 @@
         </ul>
     </aside>
 
-    <div class="row">
-        <div class="col m12 offset-l4 l8">
-            <div class="card card-default">
-                    <div class="card-content">
-                        <h4 class="card-title">HTTP Metrics</h4>
-                        <div class="row">
-                            <table class="display">
-                                <thead>
-                                    <tr role="row">
-                                        <th class="sorting_asc">
-                                            Namespace
-                                        </th>
-                                        <th class="sorting">
-                                            Meshed
-                                        </th>
-                                        <th class="sorting">
-                                            Success Rate
-                                        </th>
-                                        </th>
-                                        <th class="sorting">
-                                            RPS
-                                        </th>
-                                        <th class="sorting">
-                                            P50 Latency
-                                        </th>
-                                        <th class="sorting">
-                                            P95 Latency
-                                        </th>
-                                        <th class="sorting">
-                                            P99 Latency
-                                        </th>
-                                        <th class="sorting">
-                                            Grafana
-                                        </th>
-                                    </thead>
-                                <tbody>
+    <div class="main">
+        <div class="card card-default row">
+            <div class="card-content">
+                <h4 class="card-title">HTTP Metrics</h4>
+                <table>
+                    <thead>
+                        <tr role="row">
+                            <th class="sorting_asc">
+                                Namespace
+                            </th>
+                            <th class="sorting">
+                                Meshed
+                            </th>
+                            <th class="sorting">
+                                Success Rate
+                            </th>
+                            </th>
+                            <th class="sorting">
+                                RPS
+                            </th>
+                            <th class="sorting">
+                                P50 Latency
+                            </th>
+                            <th class="sorting">
+                                P95 Latency
+                            </th>
+                            <th class="sorting">
+                                P99 Latency
+                            </th>
+                            <th class="sorting">
+                                Grafana
+                            </th>
+                        </thead>
+                    <tbody>
 
-                                </tbody>
-                                <tfoot>
+                    </tbody>
+                    <tfoot>
 
-                                </tfoot>
-                            </table>
-                        </div>
-                    </div>
-                </div>
+                    </tfoot>
+                </table>
             </div>
         </div>
     </div>

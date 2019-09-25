@@ -47,13 +47,29 @@
   left: 10px;
 }
 
+@media only screen and (min-width: 993px) {
+  .navbar .navbar-main {
+    padding-left: 300px;
+  }
+}
+@media only screen and (max-width: 993px) {
+  .navbar .navbar-main {
+    padding-left: 3em;
+  }
+}
 .navbar .navbar-list {
   margin-left: 1em;
 }
 
 /* Main Content */
-.main .card {
-  overflow-x: auto;
+.main {
+  margin-left: 1em;
+  margin-right: 1em;
+}
+@media only screen and (min-width: 993px) {
+  .main {
+    padding-left: 300px;
+  }
 }
 
 /*# sourceMappingURL=index.css.map */
