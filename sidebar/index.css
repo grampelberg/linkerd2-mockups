@@ -6,11 +6,14 @@
 .sidenav {
   border: none;
 }
-.sidenav li > a.btn > i {
-  color: #fff;
+.sidenav li > a.btn {
+  margin: 20px 30px 10px 30px;
 }
 .sidenav .navigation-header {
   text-transform: uppercase;
+}
+.sidenav .navigation-header :hover {
+  background-color: transparent !important;
 }
 .sidenav .navigation-header .navigation-header-text {
   color: #969696;
@@ -54,7 +57,7 @@
 }
 @media only screen and (max-width: 993px) {
   .navbar .navbar-main {
-    padding-left: 3em;
+    padding-left: 2em;
   }
 }
 .navbar .navbar-list {
