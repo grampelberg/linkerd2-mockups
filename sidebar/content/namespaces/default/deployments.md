@@ -1,0 +1,4 @@
+---
+type: deployments
+layout: list
+---
