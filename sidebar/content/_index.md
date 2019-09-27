@@ -1,2 +1,4 @@
 ---
+breadcrumb:
+- Namespaces
 ---
