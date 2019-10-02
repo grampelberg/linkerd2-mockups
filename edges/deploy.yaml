@@ -1,0 +1,23 @@
+header:
+  - src
+  - src_ns
+  - dst
+  - dst_ns
+  - svc
+  - protocol
+  - port
+  - identity
+  - secured
+  - reason
+rows:
+  - - web
+    - emojivoto
+    - emoji
+    - emojivoto
+    - emoji-svc.emojivoto
+    - grpc
+    - 8080
+    - emoji
+    - √
+    - mesh internal
+  - -

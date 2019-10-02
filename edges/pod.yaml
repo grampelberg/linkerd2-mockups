@@ -1,0 +1,67 @@
+header:
+  - src
+  - src_ns
+  - dst
+  - dst_ns
+  - svc
+  - protocol
+  - port
+  - identity
+  - secured
+  - reason
+rows:
+  # inter-cluster, both side injected, same ns
+  - - web-56955474f7-hsqnn
+    - emojivoto
+    - emoji-596866d567-6wl6s
+    - emojivoto
+    - emoji-svc.emojivoto
+    - grpc
+    - 8080
+    - emoji
+    - √
+    - mesh internal
+  # inter-cluster, from ingress controller, different ns, both injected
+  - - nginx-nginx-ingress-controller-5966b7db6d-8ndfh
+    - nginx
+    - web-56955474f7-hsqnn
+    - emojivoto
+    - web-svc.emojivoto
+    - http/1
+    - 80
+    - nginx
+    - √
+    - mesh internal
+  # service load balancer, outside the cluster, destination injected
+  - - 1-1-1-1.PUBLIC.monkeybrains.net
+    - ""
+    - web-56955474f7-hsqnn
+    - emojivoto
+    - web-svc.emojivoto
+    - http/1
+    - 80
+    - ""
+    - X
+    - mesh external
+  # inter-cluster, destination not meshed
+  - - emoji-596866d567-6wl6s
+    - emojivoto
+    - tiller-deploy-7f4d76c4b6-gldnc
+    - kube-system
+    - tiller-deploy.kube-system
+    - grpc
+    - 44134
+    - ""
+    - X
+    - mesh external
+  # egress, https
+  - - web-56955474f7-hsqnn
+    - emojivoto
+    - lb-140-82-114-3-iad.github.com
+    - ""
+    - ""
+    - ""
+    - 443
+    - ""
+    - √
+    - passthrough
