@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.css" integrity="sha256-13EKEXRsynh3cmmNF1dlW6uvoC1SZVaW94bIHZQJoMU=" crossorigin="anonymous" />    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.min.css">
+
+    {{ $css := resources.Get "scss/index.scss" | toCSS }}
+    <link rel="stylesheet" href="{{ $css.Permalink }}">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+</head>
+<body>
+    {{ partial "navbar.html" . }}
+
+    {{ partial "sidebar.html" . }}
+
+    <div class="main">
+        {{ block "main" . }}{{ end }}
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.js" integrity="sha256-6DDZX77BrYnAmK9a3N3tvNPtyTIk1q1w9iW+UBtot3Y=" crossorigin="anonymous"></script>
+    <script>M.AutoInit();</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/svgxuse/1.2.6/svgxuse.min.js" integrity="sha256-+xblFIDxgSu6OfR6TdLhVHZzVrhw8eXiVk8PRi9ACY8=" crossorigin="anonymous"></script>
+</body>
+</html>
