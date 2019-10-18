@@ -21,3 +21,36 @@ This is in progress. To run a current experiment:
 ```
 
 Note: I'm not currently tracking the python dependencies required and have not put a docker image together to manage that. It'll happen eventually...
+
+## Outstanding
+
+### Smaller
+
+- Text selector for namespace dropdown
+
+### Sections
+
+- Cron Jobs
+- Replica Sets
+- Ingress
+- Service Accounts
+- Service Profiles
+
+### Design Refreshes
+
+- Empty states
+- Detail view
+    - Show details for what options are being used (tracing, debug, ....)
+- List view
+- Control Plane
+    - Show install config
+    - Add something about trust roots.
+    - Should check run here as well?
+- Tap (add headers)
+
+### Long Term
+
+- Configuration of external services
+- Tracing
+- Edges (audit)
+- Time slider for current data

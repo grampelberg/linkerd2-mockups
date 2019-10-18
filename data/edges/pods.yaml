@@ -1,0 +1,94 @@
+# both sides meshed
+- src:
+    ip: 10.0.0.1
+    resource:
+      apiVersion: v1
+      kind: pod
+      name: web-56955474f7-hsqnn
+      namespace: emojivoto
+  dst:
+    ip: 10.0.0.2
+    port: 8080
+    resource:
+      apiVersion: v1
+      kind: pod
+      name: emoji-596866d567-6wl6s
+      namespace: emojivoto
+  metadata:
+    labels:
+      authority: emoji-svc.emojivoto.svc.cluster.local:8080
+      client_id: web.emojivoto.serviceaccount.identity.linkerd.cluster.local
+  tls: true
+  classification: internal
+# both sides meshed
+- src:
+    ip: 10.0.0.3
+    resource:
+      apiVersion: v1
+      kind: pod
+      name: nginx-nginx-ingress-controller-5966b7db6d-8ndfh
+      namespace: nginx
+  dst:
+    ip: 10.0.0.1
+    port: 80
+    resource:
+      apiVersion: v1
+      kind: pod
+      name: web-56955474f7-hsqnn
+      namespace: emojivoto
+  metadata:
+    labels:
+      authority: web-svc.emojivoto.svc.cluster.local:80
+      client_id: nginx.nginx.serviceaccount.identity.linkerd.cluster.local
+  tls: true
+  classification: internal
+# load balancer, ingress, unencrypted
+- src:
+    ip: 1.1.1.1
+  dst:
+    ip: 10.0.0.2
+    port: 8080
+    resource:
+      apiVersion: v1
+      kind: pod
+      name: emoji-596866d567-6wl6s
+      namespace: emojivoto
+  metadata:
+    labels:
+      authority: emoji.example.com
+  tls: false
+  classification: ingress
+# same cluster, one side meshed, unencrypted
+- src:
+    ip: 10.0.0.2
+    resource:
+      apiVersion: v1
+      kind: pod
+      name: emoji-596866d567-6wl6s
+      namespace: emojivoto
+  dst:
+    ip: 10.0.0.6
+    port: 44134
+    resource:
+      apiVersion: v1
+      kind: pod
+      name: tiller-deploy-7f4d76c4b6-gldnc
+      namespace: kube-system
+  metadata:
+    labels:
+      authority: tiller-deploy.kube-system
+  tls: false
+  classification: egress
+# egress, encrypted
+- src:
+    ip: 10.0.0.1
+    resource:
+      apiVersion: v1
+      kind: pod
+      name: web-56955474f7-hsqnn
+      namespace: emojivoto
+  dst:
+    ip: 140.82.114.3
+    port: 443
+  tls: true
+  classification: egress

@@ -1,16 +1,118 @@
 {{ define "main" }}
-<h2>emoji</h2>
+<div class="row">
+    <div class="col s12">
+        <h4>{{ .Params.name }}</h4>
+    </div>
+</div>
+<div>
+    <div class="col s12 right">
+        <a class="btn-flat light-blue-text" href="#inbound">Inbound</a>
+        <a class="btn-flat light-blue-text" href="#outbound">Outbound</a>
+        <a class="btn-flat light-blue-text">Pods</a>
+        <a class="btn-flat light-blue-text">TCP</a>
+        <a class="btn-flat light-blue-text">Edges</a>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col s12 scroll octopus">
+        <img src="https://via.placeholder.com/974x460.png?text=octopus">
+    </div>
+</div>
 
 <div class="row">
     <div class="col s12">
         <div class="card">
             <div class="card-content">
-                <h5 class="card-title">
+                <div class="card-title">
+                    <h5 class="left">Inbound</h5>
+                    <i
+                        class="far fa-question-circle tooltip tooltipped"
+                        data-position="right"
+                        data-tooltip="All traffic received by this resource.">
+                    </i>
+                    <h5 class="right"><i class="material-icons">filter_list</i></h5>
+                </div>
+                <!-- <h5 id="inbound" class="card-title">
                     Inbound
+
+                </h5> -->
+                <div class="row">
+                    <div class="col s12 scroll">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th class="active">
+                                        Resource
+                                        <i class="fas fa-arrow-up"></i>
+                                    </th>
+                                    <th class="left-align">
+                                        Success
+                                        <i class="fas fa-arrow-up"></i>
+                                    </th>
+                                    <th class="left-align">
+                                        RPS
+                                        <i class="fas fa-arrow-up"></i>
+                                    </th>
+                                    <th class="left-align">
+                                        P50
+                                        <i class="fas fa-arrow-up"></i>
+                                    </th>
+                                    <th class="left-align">
+                                        P95
+                                        <i class="fas fa-arrow-up"></i>
+                                    </th>
+                                    <th class="left-align">
+                                        P99
+                                        <i class="fas fa-arrow-up"></i>
+                                    </th>
+                                    <th class="left-align"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {{ range .Params.inbound }}
+                                <tr>
+                                    <td>
+                                        <a class="truncate" href="#!">
+                                            {{ .name }}
+                                        </a>
+                                    </td>
+                                    <td class="left-align">
+                                        {{ if eq .success 100 }}
+                                        <i class="fas fa-circle green-text success"></i>
+                                        {{ else if ge .success 90 }}
+                                        <i class="fas fa-circle orange-text success"></i>
+                                        {{ else }}
+                                        <i class="fas fa-circle red-text success"></i>
+                                        {{ end }}
+                                        {{ .success }}%
+                                    </td>
+                                    <td class="left-align">{{ .rps }}</td>
+                                    <td class="left-align">{{ .p50 }}</td>
+                                    <td class="left-align">{{ .p95 }}</td>
+                                    <td class="left-align">{{ .p99 }}</td>
+                                    <td class="left-align">{{ partial "grafana.html" }}</td>
+                                </tr>
+                                {{ end }}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col s12">
+        <div class="card">
+            <div class="card-content">
+                <h5 id="outbound" class="card-title">
+                    Outbound
                 </h5>
                 <div class="row">
                     <div class="col s12">
-                        <table class="responsive-table">
+                        <table>
                             <thead>
                                 <tr>
                                     <th colspan="3"></th>
