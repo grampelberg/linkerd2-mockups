@@ -1,0 +1,61 @@
+<div class="row">
+    <div class="col s12">
+        <table>
+            <thead>
+                <tr>
+                    <th class="active">
+                        Resource
+                        <i class="fas fa-arrow-up"></i>
+                    </th>
+                    <th class="left-align">
+                        Success
+                        <i class="fas fa-arrow-up"></i>
+                    </th>
+                    <th class="left-align">
+                        RPS
+                        <i class="fas fa-arrow-up"></i>
+                    </th>
+                    <th class="left-align">
+                        P50
+                        <i class="fas fa-arrow-up"></i>
+                    </th>
+                    <th class="left-align">
+                        P95
+                        <i class="fas fa-arrow-up"></i>
+                    </th>
+                    <th class="left-align">
+                        P99
+                        <i class="fas fa-arrow-up"></i>
+                    </th>
+                    <th class="left-align"></th>
+                </tr>
+            </thead>
+            <tbody>
+                {{ range . }}
+                <tr>
+                    <td>
+                        <a class="truncate" href="#!">
+                            {{ .name }}
+                        </a>
+                    </td>
+                    <td class="left-align">
+                        {{ if eq .success 100 }}
+                        <i class="fas fa-circle green-text success"></i>
+                        {{ else if ge .success 90 }}
+                        <i class="fas fa-circle orange-text success"></i>
+                        {{ else }}
+                        <i class="fas fa-circle red-text success"></i>
+                        {{ end }}
+                        {{ .success }}%
+                    </td>
+                    <td class="left-align">{{ .rps }}</td>
+                    <td class="left-align">{{ .p50 }}</td>
+                    <td class="left-align">{{ .p95 }}</td>
+                    <td class="left-align">{{ .p99 }}</td>
+                    <td class="left-align">{{ partial "grafana.html" }}</td>
+                </tr>
+                {{ end }}
+            </tbody>
+        </table>
+    </div>
+</div>
