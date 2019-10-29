@@ -3,28 +3,29 @@
         <table class="highlight">
             <thead>
                 <tr>
-                    <th class="active resource">
-                        Resource
+                    <th class="expand-icon"></th>
+                    <th class="left-align path">
+                        Path
                         <i class="fas fa-arrow-up"></i>
                     </th>
                     <th class="left-align">
                         Success
                         <i class="fas fa-arrow-up"></i>
                     </th>
+                    <th class="left-align active">
+                        Count
+                        <i class="fas fa-arrow-down"></i>
+                    </th>
                     <th class="left-align">
-                        RPS
+                        Best
                         <i class="fas fa-arrow-up"></i>
                     </th>
                     <th class="left-align">
-                        P50
+                        Worst
                         <i class="fas fa-arrow-up"></i>
                     </th>
                     <th class="left-align">
-                        P95
-                        <i class="fas fa-arrow-up"></i>
-                    </th>
-                    <th class="left-align">
-                        P99
+                        Last
                         <i class="fas fa-arrow-up"></i>
                     </th>
                     <th class="left-align"></th>
@@ -32,11 +33,12 @@
             </thead>
             <tbody>
                 {{ range . }}
-                <tr>
-                    <td class="resource">
-                        <a href="#!">
-                            {{ .name }}
-                        </a>
+                <tr onclick="expandSibling(this)">
+                    <td class="expand-icon">
+                        <i class="fas fa-angle-right"></i>
+                    </td>
+                    <td class="left-align path">
+                        {{ .path }}
                     </td>
                     <td class="left-align">
                         {{ if eq .success 100 }}
@@ -48,11 +50,18 @@
                         {{ end }}
                         {{ .success }}%
                     </td>
-                    <td class="left-align">{{ .rps }}</td>
-                    <td class="left-align">{{ .p50 }}</td>
-                    <td class="left-align">{{ .p95 }}</td>
-                    <td class="left-align">{{ .p99 }}</td>
-                    <td class="left-align">{{ partial "grafana.html" }}</td>
+                    <td class="left-align">{{ .count }}</td>
+                    <td class="left-align">{{ .best }}</td>
+                    <td class="left-align">{{ .worst }}</td>
+                    <td class="left-align">{{ .last }}</td>
+                    <td class="left-align"><i class="fas fa-microscope"></i></td>
+                </tr>
+                <tr class="expand-row hide">
+                    <td colspan="8">
+                        {{ range .resources }}
+                        <a href="#!">{{ . }}</a>
+                        {{ end }}
+                    </td>
                 </tr>
                 {{ end }}
             </tbody>

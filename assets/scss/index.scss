@@ -118,9 +118,28 @@ nav {
         }
 
         tr {
+            &.expand-row {
+                background-color: #fafafa;
+            }
+
+            .resource {
+                width: 50%;
+            }
+
+            .path {
+                width: 45%;
+            }
+
+            .expand-icon {
+                width: 5%;
+            }
+
+            td:hover {
+                cursor: pointer;
+            }
+
             td:first-child, th:first-child {
                 padding-left: 24px;
-                width: 50%;
             }
 
             td:last-child,  th:last-child {
