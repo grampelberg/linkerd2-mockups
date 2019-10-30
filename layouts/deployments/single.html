@@ -6,17 +6,22 @@
 </div>
 <div>
     <div class="col s12 right">
-        <a class="btn-flat light-blue-text" href="#inbound">Inbound</a>
-        <a class="btn-flat light-blue-text" href="#outbound">Outbound</a>
-        <a class="btn-flat light-blue-text">Pods</a>
-        <a class="btn-flat light-blue-text">TCP</a>
-        <a class="btn-flat light-blue-text">Edges</a>
+        <a class="btn-flat light-blue-text" href="#live">Live Traffic</a>
+        <a class="btn-flat light-blue-text" href="#metrics">Metrics</a>
+        <a class="btn-flat light-blue-text" href="#edges">Edges</a>
     </div>
 </div>
 
 <div class="row">
     <div class="col s12 scroll octopus">
         <img src="https://via.placeholder.com/974x460.png?text=octopus">
+    </div>
+</div>
+
+<div class="row">
+    <div class="col s12">
+        <h4 id="live">Live Traffic</h4>
+        <div class="divider"></div>
     </div>
 </div>
 
@@ -41,6 +46,13 @@
     </div>
 </div>
 {{ end }}
+
+<div class="row">
+    <div class="col s12">
+        <h4 id="metrics">Metrics</h4>
+        <div class="divider"></div>
+    </div>
+</div>
 
 {{ range .Params.golden }}
 <div class="row">

@@ -1,0 +1,12 @@
+{{ if not (isset . "type") }}
+<a href="#!">{{ .name }}</a>
+{{ else if eq .type "ip" }}
+<span class="icon-fa center-align">
+    <i class="fas fa-map-marker-alt"></i>
+</span>{{ .name }}
+{{ else }}
+<svg class="icon-k8s">
+    <use xlink:href="/k8s.svg#resources-unlabeled-{{ .type }}"></use>
+</svg>
+<a href="#!">{{ .name }}</a>
+{{ end }}

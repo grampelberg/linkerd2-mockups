@@ -57,6 +57,16 @@ body {
             margin: 15px auto;
         }
     }
+
+    .fa-sidebar {
+        display: inline-block;
+        float: left;
+        height: 48px;
+        line-height: 48px;
+        margin: 0 32px 0 0;
+        width: 30px;
+        color: rgba(0,0,0,0.54);
+    }
 }
 
 .sidenav-main {
@@ -123,11 +133,11 @@ nav {
             }
 
             .resource {
-                width: 50%;
+                width: 423px;
             }
 
             .path {
-                width: 45%;
+                width: 381px;
             }
 
             .expand-icon {
@@ -155,5 +165,50 @@ nav {
                 height: 15px;
             }
         }
+    }
+}
+
+.table-description {
+    .title {
+        font-weight: 400;
+        font-size: 1.25rem;
+
+        .tooltip {
+            font-size: 1rem;
+            margin-left: 0rem;
+            margin-top: 0.3rem;
+        }
+    }
+
+    .row {
+        margin-bottom: 0px;
+    }
+}
+
+.resources {
+    $icon-color: rgba(0,0,0,0.5);
+
+    .collection-item {
+        padding-left: 20px !important;
+    }
+
+    .icon-k8s, span.icon-fa {
+        height: 1.5rem;
+        width: 1.5rem;
+        margin-right: 1rem;
+    }
+
+    .icon-k8s {
+        float: left;
+        --background: rgba(0,0,0,0.5);
+    }
+
+    .icon-fa {
+        display: inline-block;
+        color: $icon-color;
+    }
+
+    .indent {
+        margin-left: 2.5rem;
     }
 }

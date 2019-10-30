@@ -7,19 +7,22 @@ golden:
 - name: Inbound
   tooltip: All traffic received by this resource
   rows:
-  - name: deploy/web
+  - name: web
+    type: deploy
     success: 100
     rps: 1.97
     p50: 1 ms
     p95: 2 ms
     p99: 2 ms
-  - name: deploy/linkerd-prometheus
+  - name: linkerd-prometheus
+    type: deploy
     success: 99.23
     rps: 1.00
     p50: 10 ms
     p95: 15 ms
     p99: 1 s
-  - name: statefulset/extremely-long-totally-reasonable-name
+  - name: extremely-long-totally-reasonable-name
+    type: sts
     success: 0
     rps: 19,284.01
     p50: 3 min
@@ -28,40 +31,36 @@ golden:
 - name: Outbound
   tooltip: All traffic originating with this resource.
   rows:
-  - name: deploy/web
+  - name: web
+    type: deploy
     success: 100
     rps: 1.97
     p50: 1 ms
     p95: 2 ms
     p99: 2 ms
-  - name: deploy/linkerd-prometheus
+  - name: linkerd-prometheus
+    type: deploy
     success: 99.23
     rps: 1.00
     p50: 10 ms
     p95: 15 ms
     p99: 1 s
-  - name: statefulset/extremely-long-totally-reasonable-name
+  - name: extremely-long-totally-reasonable-name
+    type: sts
     success: 0
     rps: 19,284.01
     p50: 3 min
     p95: 1 hr
     p99: 203 hr
-- name: Pods
-  tooltip: Golden metrics for each pod in this deployment.
-  rows:
-  - name: emoji-5d7c44b496-4j72b
-    success: 100.00
-    rps: 0.3
-    p50: 1 ms
-    p95: 4 ms
-    p99: 10 ms
 live:
 - name: Inbound
   tooltip: Real time requests and responses sent to this resource.
   rows:
   - resources:
-    - deploy/linkerd-prometheus
-    - deploy/linkerd-web
+    - name: linkerd-prometheus
+      type: deploy
+    - name: linkerd-web
+      type: deploy
     method: GET
     path: /metrics
     count: 16
@@ -69,10 +68,14 @@ live:
     worst: 6 ms
     last: 3 ms
     success: 100
+    service: emoji-svc
   - resources:
-    - 10.138.0.19
-    - 10.138.0.20
-    - job/ping-a-lot
+    - name: 10.138.0.19
+      type: ip
+    - name: 10.138.0.20
+      type: ip
+    - name: ping-a-lot
+      type: job
     method: GET
     path: /ping
     count: 10
@@ -80,8 +83,10 @@ live:
     worst: 3 ms
     last: 519 µs
     success: 100
+    service: emoji-svc
   - resources:
-    - 10.138.0.19
+    - name: 10.138.0.19
+      type: ip
     method: GET
     path: /ready
     count: 3
@@ -89,19 +94,24 @@ live:
     worst: 8 ms
     last: 2 ms
     success: 100
+    service: emoji-svc
   - resources:
-    - statefulset/extremely-long-totally-reasonable-name
+    - name: extremely-long-totally-reasonable-name
+      type: sts
     path: /foobar
+    method: POST
     count: 1
     best: 30 s
     worst: 30 s
     last: 30 s
     success: 0
+    service: emoji-svc
 - name: Outbound
   tooltip: Real time requests and responses issued from this resource.
   rows:
   - resources:
-    - deploy/linkerd-controller
+    - name: linkerd-controller
+      type: deploy
     method: POST
     path: /api/v1/StatSummary
     count: 2,134
@@ -109,8 +119,10 @@ live:
     worst: 463 ms
     last: 230 ms
     success: 80
+    service: linkerd-controller
   - resources:
-    - deploy/linkerd-controller
+    - name: linkerd-controller
+      type: deploy
     method: POST
     path: /api/v1/ListPods
     count: 117
@@ -118,8 +130,10 @@ live:
     worst: 411 ms
     last: 67 ms
     success: 100
+    service: linkerd-controller
   - resources:
-    - deploy/linkerd-controller
+    - name: linkerd-controller
+      type: deploy
     method: POST
     path: /api/v1/Edges
     count: 52
@@ -127,13 +141,30 @@ live:
     worst: 395 ms
     last: 152 ms
     success: 99
+    service: linkerd-controller
   - resources:
-    - deploy/prometheus
+    - name: linkerd-prometheus
+      type: deploy
     method: HEAD
-    path: /this/is/also/a/really/long/path/with/numbers/and/letters
+    path: /this/is/also/a/really/long/path/with/numbers/and/letters/and/other/things/too
     count: 1
     best: 10 ms
     worst: 10 ms
     last: 10 ms
     success: 100
+    service: linkerd-controller
+routes:
+- name: GET /api/v1/query
+  service: linkerd-prometheus
+  success: 100
+  rps: 42.5
+  p50: 87 ms
+  p95: 188 ms
+  p99: 199 ms
+- name: GET /api/v1/query_range
+  service: linkerd-prometheus
+- name: GET /api/v1/series
+  service: linkerd-prometheus
+- name: [DEFAULT]
+  service: linkerd-prometheus
 ---
