@@ -3,6 +3,25 @@ type: deployments
 layout: single
 
 name: quiet
+
+state:
+- name: Desired
+  value: 1
+  tooltip: FIXME
+- name: Current
+  value: 1
+  tooltip: FIXME
+- name: Up-to-date
+  value: 1
+  tooltip: FIXME
+- name: Available
+  value: 1
+  tooltip: FIXME
+services:
+- quiet
+- quiet-canary
+- quiet-primary
+
 golden:
 - name: Inbound
 - name: Outbound

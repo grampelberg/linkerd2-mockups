@@ -18,6 +18,48 @@
     </div>
 </div>
 
+<div class="row">
+    <div class="col s6">
+        <ul class="collection">
+            {{ range .Params.state }}
+            <li class="collection-item row">
+                <span class="col s6 title">
+                    {{ .name }}
+                    <i
+                        class="far fa-question-circle tooltip tooltipped grey-text"
+                        data-position="right"
+                        data-tooltip="{{ .tooltip }}">
+                    </i>
+                </span>
+                <span class="col s6">
+                    {{ .value }}
+                </span>
+            </li>
+            {{ end }}
+        </ul>
+    </div>
+    <div class="col s6">
+        <ul class="collection resources">
+            <li class="collection-item title">
+                Services
+                <i
+                    class="far fa-question-circle tooltip tooltipped grey-text"
+                    data-position="right"
+                    data-tooltip="fixme">
+                </i>
+            </li>
+            {{ range .Params.services }}
+            <li class="collection-item truncate">
+                <svg class="icon-k8s">
+                    <use xlink:href="/k8s.svg#resources-unlabeled-svc"></use>
+                </svg>
+                <a href="#!">{{ . }}</a>
+            </li>
+            {{ end }}
+        </ul>
+    </div>
+</div>
+
 <div class="row section">
     <div class="col s12">
         <h4 id="live" class="left">Live Traffic</h4>
@@ -39,7 +81,7 @@
             <div class="card-content">
                 <div class="row valign-wrapper">
                     <div class="col s3 center-align indigo-text">
-                        <h1><i class="fas fa-traffic-light"></i></h1>
+                        <h1>&#x23F3;</h1>
                     </div>
                     <div class="col s9">
                         <h5>Waiting for some traffic...</h5>
@@ -93,7 +135,7 @@
             <div class="card-content">
                 <div class="row valign-wrapper">
                     <div class="col s3 center-align indigo-text">
-                        <h1><i class="fas fa-cogs"></i></h1>
+                        <h1>&#x1F9D0;</h1>
                     </div>
                     <div class="col s9">
                         <h5>No requests observed for this time period</h5>
@@ -146,7 +188,7 @@
             <div class="card-content">
                 <div class="row valign-wrapper">
                     <div class="col s3 center-align indigo-text">
-                        <h1><i class="fas fa-project-diagram"></i></h1>
+                        <h1>&#x1F937;</h1>
                     </div>
                     <div class="col s9">
                         <h5>No data</h5>

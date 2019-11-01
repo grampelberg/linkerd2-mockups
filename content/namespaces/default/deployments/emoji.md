@@ -3,6 +3,22 @@ type: deployments
 layout: single
 
 name: emoji
+state:
+- name: Desired
+  value: 3
+  tooltip: FIXME
+- name: Current
+  value: 3
+  tooltip: FIXME
+- name: Up-to-date
+  value: 3
+  tooltip: FIXME
+- name: Available
+  value: 3
+  tooltip: FIXME
+services:
+- emoji-svc
+
 golden:
 - name: Inbound
   rows:
