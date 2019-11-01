@@ -18,26 +18,51 @@
     </div>
 </div>
 
-<div class="row">
+<div class="row section">
     <div class="col s12">
-        <h4 id="live">Live Traffic</h4>
+        <h4 id="live" class="left">Live Traffic</h4>
+        <i
+            class="far fa-question-circle tooltip tooltipped grey-text left"
+            data-position="right"
+            data-tooltip="Traffic observed to and from this resource once loading the page.">
+        </i>
+    </div>
+    <div class="col s12">
         <div class="divider"></div>
     </div>
 </div>
 
+{{ if not (isset .Params "live") }}
+<div class="row">
+    <div class="col s12">
+        <div class="card empty">
+            <div class="card-content">
+                <div class="row valign-wrapper">
+                    <div class="col s3 center-align indigo-text">
+                        <h1><i class="fas fa-traffic-light"></i></h1>
+                    </div>
+                    <div class="col s9">
+                        <h5>Waiting for some traffic...</h5>
+                        <p>There has been no traffic observed for this resource
+                            yet. Generate some load or wait a little bit longer!
+                            Check out the <a href="#!">documentation</a>
+                            for more details.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{{ end }}
+
 {{ range .Params.live }}
 <div class="row">
     <div class="col s12">
-        <div class="card">
+        <div class="card table {{ if not (eq .rows nil) }}enabled{{ end }}">
             <div class="card-content">
                 <div class="card-title">
                     <h5 class="left">{{ .name }}</h5>
-                    <i
-                        class="far fa-question-circle tooltip tooltipped grey-text"
-                        data-position="right"
-                        data-tooltip="{{ .tooltip }}">
-                    </i>
-                    <h5 class="right"><i class="material-icons">filter_list</i></h5>
+                    <h5 class="right"><i class="material-icons filter  {{ if eq .rows nil }}hide{{ end }}">filter_list</i></h5>
                 </div>
 
                 {{ partial "live-table.html" .rows }}
@@ -47,29 +72,108 @@
 </div>
 {{ end }}
 
-<div class="row">
+<div class="row section">
     <div class="col s12">
-        <h4 id="metrics">Metrics</h4>
+        <h4 id="metrics" class="left">Metrics</h4>
+        <i
+            class="far fa-question-circle tooltip tooltipped grey-text left"
+            data-position="right"
+            data-tooltip="Statistical data based on traffic observed over the last 30 seconds.">
+        </i>
+    </div>
+    <div class="col s12">
         <div class="divider"></div>
     </div>
 </div>
 
+{{ if not (isset .Params "golden") }}
+<div class="row">
+    <div class="col s12">
+        <div class="card empty">
+            <div class="card-content">
+                <div class="row valign-wrapper">
+                    <div class="col s3 center-align indigo-text">
+                        <h1><i class="fas fa-cogs"></i></h1>
+                    </div>
+                    <div class="col s9">
+                        <h5>No requests observed for this time period</h5>
+                        <p>Send some requests to your workload and they'll show
+                            up here. Check out the <a href="#!">documentation</a>
+                            for more details.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{{ end }}
+
 {{ range .Params.golden }}
 <div class="row">
     <div class="col s12">
-        <div class="card">
+        <div class="card table {{ if not (eq .rows nil) }}enabled{{ end }}">
             <div class="card-content">
                 <div class="card-title">
                     <h5 class="left">{{ .name }}</h5>
-                    <i
-                        class="far fa-question-circle tooltip tooltipped grey-text"
-                        data-position="right"
-                        data-tooltip="{{ .tooltip }}">
-                    </i>
-                    <h5 class="right"><i class="material-icons">filter_list</i></h5>
+                    <h5 class="right"><i class="material-icons filter  {{ if eq .rows nil }}hide{{ end }}">filter_list</i></h5>
                 </div>
 
                 {{ partial "golden-table.html" .rows }}
+            </div>
+        </div>
+    </div>
+</div>
+{{ end }}
+
+<div class="row section">
+    <div class="col s12">
+        <h4 id="edges" class="left">Edges</h4>
+        <i
+            class="far fa-question-circle tooltip tooltipped grey-text left"
+            data-position="right"
+            data-tooltip="Connections observed between this resource and others">
+        </i>
+    </div>
+    <div class="col s12">
+        <div class="divider"></div>
+    </div>
+</div>
+
+{{ if not (isset .Params "edges") }}
+<div class="row">
+    <div class="col s12">
+        <div class="card empty">
+            <div class="card-content">
+                <div class="row valign-wrapper">
+                    <div class="col s3 center-align indigo-text">
+                        <h1><i class="fas fa-project-diagram"></i></h1>
+                    </div>
+                    <div class="col s9">
+                        <h5>No data</h5>
+                        <p>There have not been any connections incoming or
+                            outgoing from the resource recently. Generate some
+                            traffic for the source or destination resources to
+                            be populated. Check out the <a href="#!">documentation</a>
+                            for more details.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{{ end }}
+
+{{ range .Params.edges }}
+<div class="row">
+    <div class="col s12">
+        <div class="card table {{ if not (eq .rows nil) }}enabled{{ end }}">
+            <div class="card-content">
+                <div class="card-title">
+                    <h5 class="left">{{ .name }}</h5>
+                    <h5 class="right"><i class="material-icons filter  {{ if eq .rows nil }}hide{{ end }}">filter_list</i></h5>
+                </div>
+
+                {{ partial "edges-table.html" .rows }}
             </div>
         </div>
     </div>

@@ -99,70 +99,80 @@ nav {
         padding-left: 300px;
     }
 
-    .card-content {
-        padding: 0;
+    .card.empty {
+        .row {
+            margin-bottom: 0px;
+        }
+    }
 
-        .card-title {
-            padding: 24px;
-            padding-bottom: 0;
+    .table {
+        .card-content {
+            padding: 0;
 
-            .tooltip {
+            .card-title {
+                padding: 24px;
+                padding-bottom: 0;
+
+                .tooltip {
+                    font-size: 1rem;
+                    margin-top: 1.09333rem;
+                    margin-left: 0.5rem;
+                }
+            }
+
+            th {
+                color: #9e9e9e;
                 font-size: 1rem;
-                margin-top: 1.09333rem;
-                margin-left: 0.5rem;
-            }
-        }
-
-        th {
-            color: #9e9e9e;
-            font-size: 1rem;
-            font-weight: 300;
-
-            &:hover {
-                color: #000000;
+                font-weight: 300;
             }
 
-            &.active {
-                color: #000000;
-            }
-        }
+            th.enabled {
+                &:hover {
+                    color: #000000;
+                }
 
-        tr {
-            &.expand-row {
-                background-color: #fafafa;
-            }
-
-            .resource {
-                width: 423px;
+                &.active {
+                    color: #000000;
+                }
             }
 
-            .path {
-                width: 381px;
-            }
+            tr {
+                &.expand-row {
+                    background-color: #fafafa;
+                }
 
-            .expand-icon {
-                width: 5%;
-            }
+                .resource {
+                    width: 423px;
+                }
 
-            td:hover {
-                cursor: pointer;
-            }
+                .path {
+                    width: 381px;
+                }
 
-            td:first-child, th:first-child {
-                padding-left: 24px;
-            }
+                .expand-icon {
+                    width: 5%;
+                }
 
-            td:last-child,  th:last-child {
-                padding-right: 24px;
-            }
+                td:hover {
+                    cursor: pointer;
+                }
 
-            .success {
-                font-size: 0.75rem;
-            }
+                td:first-child, th:first-child {
+                    padding-left: 24px;
+                }
 
-            .grafana-logo {
-                width: 15px;
-                height: 15px;
+                td:last-child,  th:last-child {
+                    padding-right: 24px;
+                }
+
+                .success {
+                    font-size: 0.75rem;
+                }
+
+                .grafana-logo {
+                    width: 15px;
+                    height: 15px;
+                }
             }
         }
     }
@@ -210,5 +220,12 @@ nav {
 
     .indent {
         margin-left: 2.5rem;
+    }
+}
+
+.section {
+    .tooltip {
+        margin: 2rem 0 0.912rem 0.5rem;
+        font-size: 1.5rem;
     }
 }

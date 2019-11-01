@@ -1,4 +1,10 @@
 {{ define "main" }}
 <h1>list</h1>
-<a href="emoji">emoji</a>
+{{ range .Pages }}
+<div class="row">
+    <div class="col s12">
+        <a href="{{ .RelPermalink }}">{{ .Params.name }}</a>
+    </div>
+</div>
+{{ end }}
 {{ end }}

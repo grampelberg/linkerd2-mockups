@@ -5,7 +5,6 @@ layout: single
 name: emoji
 golden:
 - name: Inbound
-  tooltip: All traffic received by this resource
   rows:
   - name: web
     type: deploy
@@ -29,32 +28,16 @@ golden:
     p95: 1 hr
     p99: 203 hr
 - name: Outbound
-  tooltip: All traffic originating with this resource.
   rows:
-  - name: web
+  - name: linkerd-controller
     type: deploy
     success: 100
     rps: 1.97
     p50: 1 ms
     p95: 2 ms
     p99: 2 ms
-  - name: linkerd-prometheus
-    type: deploy
-    success: 99.23
-    rps: 1.00
-    p50: 10 ms
-    p95: 15 ms
-    p99: 1 s
-  - name: extremely-long-totally-reasonable-name
-    type: sts
-    success: 0
-    rps: 19,284.01
-    p50: 3 min
-    p95: 1 hr
-    p99: 203 hr
 live:
 - name: Inbound
-  tooltip: Real time requests and responses sent to this resource.
   rows:
   - resources:
     - name: linkerd-prometheus
@@ -107,7 +90,6 @@ live:
     success: 0
     service: emoji-svc
 - name: Outbound
-  tooltip: Real time requests and responses issued from this resource.
   rows:
   - resources:
     - name: linkerd-controller
@@ -153,18 +135,44 @@ live:
     last: 10 ms
     success: 100
     service: linkerd-controller
-routes:
-- name: GET /api/v1/query
-  service: linkerd-prometheus
-  success: 100
-  rps: 42.5
-  p50: 87 ms
-  p95: 188 ms
-  p99: 199 ms
-- name: GET /api/v1/query_range
-  service: linkerd-prometheus
-- name: GET /api/v1/series
-  service: linkerd-prometheus
-- name: [DEFAULT]
-  service: linkerd-prometheus
+edges:
+- name: Inbound
+  rows:
+  - name: web
+    type: deploy
+    protocol: HTTP
+    connections: 1
+    read: 301.0 B/s
+    write: 297.32 B/s
+    secured: true
+  - name: linkerd-prometheus
+    type: deploy
+    protocol: HTTP
+    connections: 1
+    read: 10.31 Kb/s
+    write: 423 Mb/s
+    secured: true
+  - name: extremely-long-totally-reasonable-name
+    type: sts
+    protocol: HTTP
+    connections: 3023
+    read: 1.00 Tb/s
+    write: 32 B/s
+    secured: true
+  - name: 10.1.3.2
+    type: ip
+    protocol: TCP
+    connections: 3
+    read: 0 B/s
+    write: 300 B/s
+    secured: false
+- name: Outbound
+  rows:
+  - name: linkerd-controller
+    type: deploy
+    protocol: HTTP
+    connections: 3023
+    read: 1.00 Tb/s
+    write: 32 B/s
+    secured: true
 ---
